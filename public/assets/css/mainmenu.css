@@ -1,0 +1,48 @@
+#app_mainmenu{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#app_mainmenu #begin_stream{
+    margin: 30px auto 0;
+    display: block;
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 30px;
+    cursor: pointer;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+#app_mainmenu #begin_stream:hover{
+    background-color: var(--dark-main-color);
+}
+
+#app_mainmenu #checkbox_tutorial{
+    background-color: var(--main-color);
+}
+
+input#association{
+    font-size: 25pt;
+    text-align: center;
+    font-family: 'Carter One', cursive;
+    width: 50%;
+    min-width: 250px;
+}
+
+.dash-checkbox{
+    border: solid 2px var(--main-color);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: fit-content;
+}
+
+.dash-checkbox > label{ padding-left: 10px; }

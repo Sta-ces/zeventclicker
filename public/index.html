@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<link rel="icon" type="image/png" href="./images/icon.svg" />
+	<meta property="fb:app_id"			content="2908287049300335" />
+	<meta property="og:url"				content="https://projects.staces.be/zevent/" />
+	<meta property="og:type"			content="website" />
+	<meta property="og:site_name"		content="Cédric Staes" />
+	<meta property="og:title"			content="zevent - Le jeu caritatif (non-officiel)" />
+	<meta property="og:description"		content="Jeu non-officiel de l'événement caritatif annuel zevent." />
+	<meta property="og:image"			content="./images/sharing-images.jpg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap">
+    <link type="text/css" rel="stylesheet" href="./assets/css/scrollBarCustom.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/base.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/mainmenu.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/game.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/streamers.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/tuto.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/bonus.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/finish.css">
+    <script type="text/javascript" src="./assets/stEngine/inc/tools.js"></script>
+    <script type="text/javascript" src="./assets/js/scrollingMenuEffect.js"></script>
+    <title>zevent clicker</title>
+</head>
+<body>
+    <h1>ZEvent<br/><span>clicker</span></h1>
+
+    <div id="app_mainmenu" name="mainmenu" class="screen-element" data-state="open">
+        <input type="text" id="association" placeholder="Association" maxlength="30">
+        <p class="italic small center">(Si vide, une association sera automatiquement sélectionnée pour vous)</p>
+        <div class="center dash-checkbox">
+            <input type="checkbox" name="tutorial" id="checkbox_tutorial">
+            <label for="checkbox_tutorial">Aide de Dach <em class="small">(Tutoriel)</em></label>
+        </div>
+        <div class="difficulties flex center">
+            <label for="difficulties" class="marg-20">Choisissez votre difficulté :</label>
+            <select name="difficulties" class="difficulties-select" title="La difficulté change le temps et la durée de live des streamers. Plus difficile = plus rapide">
+                <option value="easy">Facile</option>
+                <option value="normal" selected>Moyen</option>
+                <option value="hard">Difficile</option>
+            </select>
+            <p class="italic difficulty-details timer_game marg-10" title="Temps en minutes"></p>
+        </div>
+        <button id="begin_stream" class="start-game"><span class="text">Commencer le live</span><span class='loader'></span></button>
+    </div>
+    <div id="app_game" name="game" class="screen-element" data-state="close" data-association-name="" data-viewers="0">
+        <p class="small gray italic center" style="margin: 50px 0 0">Temps restant :</p>
+        <p class="timer_game center noselect"></p>
+        <p id="association_name" class="center association-name"></p>
+        <div class="controls_user sectionsScrolling" data-section-scrolling="controls-user">
+            <p class="jackpot_container noselect"><span class="jackpot"></span></p>
+            <button id="btn_clicker" class="button-live noselect animate__animated animate__pulse animate__infinite">Live!</button>
+            <p class="viewers_container noselect"><span class="viewers i-eye">0</span></p>
+        </div>
+        <ul id="streamers_list"></ul>
+        <div class="controls_user_bottom" data-scrolling="controls-user">
+            <p class="jackpot_container noselect" style="min-width: 250px;"><span class="jackpot"></span></p>
+            <p class="timer_game center noselect no-marg"></p>
+            <p class="viewers_container noselect" style="min-width: 250px; text-align: right;"><span class="viewers i-eye">0</span></p>
+        </div>
+    </div>
+    <div id="app_boost" name="boost" class="screen-element" data-state="close">
+        <h3 class="boost-text animate__animated animate__infinite animate__faster animate__heartBeat">Boost</h3>
+    </div>
+    <div id="app_tuto" name="tutorial" class="screen-element" data-state="close">
+        <img src="./images/dach/dach.png" alt="Dach Face" class="dach_face">
+        <h3 class="tuto_title">Salut c'est Dach !</h3>
+        <h4 class="tuto_subtitle">Je vais t'aider</h4>
+        <p class="tuto_explication">Lorem ipsum</p>
+        <div id="btn_navigation">
+            <button class="close">Terminer</button>
+            <button class="previous">Précédent</button>
+            <button class="next">Suivant</button>
+        </div>
+        <p id="page_number"><span class="active">0</span>/<span class="all">0</span></p>
+    </div>
+    <div id="app_finish" name="finish" data-state="close" class="center screen-element">
+        <h3 class="finish_title">Félicitation !<br>Tu as récolté :</h3>
+        <h2 class="finish_jackpot"><span class="money_total jackpot"></span></h2>
+        <h3 class="finish_subtitle">pour l'association<br><span class="association-name"></span></h3>
+        <p>avec <span class="total-viewers"></span> spectateurs</p>
+        <table>
+            <caption>Statistiques</caption>
+            <tbody>
+                <tr title="nombre de clique sur le bouton Live!">
+                    <td>Nombre de cliques</td>
+                    <td class="user-click">0</td>
+                </tr>
+                <tr title="viewers que vous avez attirés en cliquant sur le bouton Live!">
+                    <td>Viewers attirés</td>
+                    <td class="user-viewers">0</td>
+                </tr>
+                <tr title="nombre de streamers débloqués">
+                    <td>Streamers dans la <span class="color">SQUAD</span></td>
+                    <td class="user-streamers">0</td>
+                </tr>
+                <tr class="none">
+                    <td>Bonus débloqués</td>
+                    <td class="user-bonus">0</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="reset">Recommencer</button>
+        <input type="text" id="association_change" placeholder="Changer d'association">
+    </div>
+    <div id="app_bonus" name="bonuses" class="screen-element" data-state="close">
+        <ul id="bonuses_list"></ul>
+        <button id="showBonusMenu">Bonus</button>
+    </div>
+    <div id="app_achievements" name="achievements" class="screen-element" data-state="close">
+        <ul id="achievements_list"></ul>
+        <button id="showAchievementsMenu">Achievements</button>
+    </div>
+    
+    <p class="author small italic center margin-tb">
+        v<span class="gameversion"></span> - <a href="https://grumpygreen.be/" target="_blank" rel="noreferrer">Grumpy Green Studio</a><br>
+        <span>ATTENTION : L'argent illustré dans ce jeu est fictif. Il ne s'agit aucunement de véritable transaction monétaire quelle qu'elle soit.</span>
+    </p>
+    
+    <script type="module" src="./system/gamemanager.js"></script>
+</body>
+</html>

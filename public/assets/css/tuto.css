@@ -1,0 +1,62 @@
+#app_tuto{
+    position: fixed;
+    bottom: 1em; right: 1em;
+    background-color: var(--black-color);
+    border-radius: 25px 50px 25px 50px;
+    border: solid 10px var(--main-color);
+    max-width: 450px;
+    padding: 1em 2em 1em 4em;
+}
+
+#app_tuto .dach_face{
+    position: absolute;
+    top: 0; left: 0;
+    transform: translate(-60%, -25%) scaleX(-1);
+    width: 125px;
+    height: auto;
+}
+
+#app_tuto .tuto_title{
+    color: var(--main-color);
+    font-size: 24pt;
+    margin-bottom: 0;
+}
+
+#app_tuto .tuto_subtitle{
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: lighter;
+    margin-top: 0;
+}
+
+#app_tuto #page_number{
+    text-align: right;
+    color: gray;
+    margin: 0;
+}
+
+#app_tuto #page_number .active{
+    font-size: 1.5em;
+    color: var(--main-color);
+}
+
+#app_tuto #btn_navigation{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 20px 0 10px;
+}
+
+#app_tuto #btn_navigation button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+#app_tuto #btn_navigation button:focus{ outline: none; }
+#app_tuto #btn_navigation button.close{ color: gray; }
+#app_tuto #btn_navigation button.next{ color: white; background-color: var(--dark-main-color); }

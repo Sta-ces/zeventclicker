@@ -1,0 +1,169 @@
+#streamers_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#streamers_list > li{
+    flex-basis: 225px;
+    margin: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+#streamers_list li[data-display="true"]{
+    cursor: default;
+}
+
+#streamers_list li[data-display="false"]:hover{
+    animation: pulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+#streamers_list li img.photo_streamer{
+    width: calc(100% - 6px);
+    height: auto;
+    border: solid 3px var(--main-color);
+    background-color: var(--black-color);
+}
+
+#streamers_list li figure{
+    position: relative;
+    margin: 0;
+}
+
+#streamers_list li figure figcaption h3{
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    text-align: center;
+    margin: 0;
+    font-size: 20pt;
+    transform: translateY(-50%);
+    line-height: 1;
+}
+
+#streamers_list li figure figcaption .streamer_unlock{
+    text-align: right;
+    margin: 15px;
+    position: absolute;
+    bottom: 0; right: 0;
+}
+
+#streamers_list li[data-display="true"] figure figcaption .streamer_unlock{
+    display: none;
+}
+
+#streamers_list li[data-display="false"] .photo_streamer,
+#streamers_list li[data-display="true"].streamer_sleep .photo_streamer{
+    opacity: .2;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+#streamers_list li[data-display="false"] .locked{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: auto;
+    filter: drop-shadow(0 0 0.75rem rgba(0,0,0,.5));
+}
+
+#streamers_list li[data-display="true"] .locked{
+    display: none;
+}
+
+#streamers_list li[data-display="true"] .streamer_stamina{
+    height: 75px;
+    width: 15px;
+    background-color: gray;
+    position: absolute;
+    bottom: 20px; left: 15px;
+    transform: rotate(180deg);
+}
+
+#streamers_list li[data-display="true"] .streamer_stamina:before{
+    content: "";
+    display: block;
+    position: relative;
+    height: var(--stamina-percent);
+    width: 100%;
+    background-color: var(--second-color);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+#streamers_list li[data-display="true"].streamer_sleep .streamer_stamina:before{
+    background-color: orangered;
+}
+
+#streamers_list li .streamer_activity{
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    text-align: center;
+    font-size: 16pt;
+}
+
+#streamers_list li[data-display="false"] .streamer_activity{
+    display: none;
+}
+
+#streamers_list li[data-display="true"] .streamer_activity:before{
+    content: "\002B24  Live";
+    color: var(--red-color);
+}
+
+#streamers_list li[data-display="true"].streamer_sleep .streamer_activity:before{
+    content: "\01f4a4  Se repose";
+    color: gray;
+}
+
+#streamers_list li[data-display="true"] .streamer_activity{
+    animation: flash;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    text-transform: uppercase;
+}
+
+#streamers_list li[data-display="true"].streamer_sleep .streamer_activity{
+    animation: flash;
+    animation-duration: 3.25s;
+    animation-iteration-count: infinite;
+    text-transform: initial;
+}
+
+.streamer-container .bonus-streamer-container{
+    position: absolute;
+    inset: auto 10px 0;
+    height: fit-content;
+    background-color: var(--black-color);
+    border: solid 5px var(--main-color);
+    border-radius: 5px;
+    color: white;
+    padding: 20px;
+    font-size: 10pt;
+    z-index: 1;
+    transform: translateY(0%);
+    opacity: 0;
+    transition-duration: .25s;
+    transition-timing-function: ease-in-out;
+    transition-property: transform, opacity;
+}
+.streamer-container[data-display="true"]:hover .bonus-streamer-container{
+    transform: translateY(-100px);
+    opacity: 1;
+}
+.streamer-container .bonus-streamer-container > *{
+    padding: 0; margin: 0;
+    font-size: 10pt;
+}

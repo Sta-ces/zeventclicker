@@ -1,0 +1,134 @@
+.tuto #app_game{
+    opacity: .15;
+}
+
+#app_game{
+    position: relative;
+    max-width: 1280px;
+    margin: auto;
+}
+
+#app_game #association_name{
+    margin-bottom: 50px;
+    font-size: 20pt;
+}
+
+#app_game .timer_game{
+    font-size: 25pt;
+    margin-top: 0;
+}
+
+#app_game .controls_user,
+#app_game .controls_user_bottom{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    position: relative;
+    margin-bottom: 125px;
+}
+
+#app_game .controls_user_bottom{
+    position: fixed;
+    left: 0; bottom: -150%; right: 0;
+    margin-bottom: 0;
+    transition: all .25s ease-in-out;
+    background-color: var(--black-color);
+    border-top: solid 2px var(--main-color);
+    padding: 0 150px;
+}
+
+#app_game .controls_user_bottom.menuScrollingElement{
+    bottom: 0;
+}
+
+#app_game .controls_user #btn_clicker{
+    filter: drop-shadow(0 0 0.75rem rgba(0,0,0,.5));
+}
+
+#app_game .controls_user #btn_clicker,
+#app_game .controls_user .wave_click_event,
+#app_game .streamer_click_event{
+    position: absolute;
+    left: calc(50% - 100px); top: 0;
+    height: 200px;
+    width: 200px;
+    font-size: 26pt;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    z-index: 2;
+    -webkit-transition: all .1s;
+    -moz-transition: all .1s;
+    -ms-transition: all .1s;
+    -o-transition: all .1s;
+    transition: all .1s;
+}
+
+#app_game .controls_user .wave_click_event,
+#app_game .streamer_click_event{
+    background-color: transparent;
+    z-index: -1;
+    border: solid 5px var(--main-color);
+    left: calc(50% - 100px - 5px);
+    top: -5px;
+}
+
+#app_game .streamer_click_event{
+    border-radius: 0;
+    border-width: 15px;
+    top: 0; left: calc(50% - 100px - 15px)
+}
+
+#app_game .controls_user #btn_clicker:hover{
+    background-color: var(--dark-main-color);
+    --animate-duration: 0.5s;
+}
+
+#app_game .controls_user #btn_clicker:focus{
+    outline: none;
+}
+
+#app_game .controls_user #btn_clicker:active {
+    background-color: var(--main-color);
+}
+
+#app_game .controls_user .jackpot,
+#app_game .controls_user .viewers{
+    font-size: 25pt;
+}
+
+#app_game .jackpot_container,
+#app_game .viewers_container{
+    position: relative;
+}
+
+#app_game .jackpot_container .click_event,
+#app_game .viewers_container .click_event{
+    --right: 30px;
+    position: absolute;
+    top: -20px; right: var(--right);
+    font-size: 15pt;
+}
+
+#app_boost{
+    position: absolute;
+    inset: auto 0 100px;
+}
+
+#app_boost .boost-text{
+    width: fit-content;
+    height: fit-content;
+    color: var(--main-color);
+    margin: auto;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 40pt;
+    text-transform: uppercase;
+}
+
+#app_boost .boost-text:before,
+#app_boost .boost-text:after
+{ content: "\1F845"; }

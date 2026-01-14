@@ -1,0 +1,147 @@
+:root{
+    --main-color: #4bba31;
+    --second-color: #99971a;
+    --dark-main-color: #2b6d1d;
+    --black-color: #161616;
+    --red-color: #b10d0d;
+}
+body{
+    color: white;
+    font-family: 'Carter One', cursive;
+    letter-spacing: 1.5px;
+    background-color: var(--black-color);
+    margin: 0;
+    padding: 0;
+}
+body.tuto,
+body.bonus{ overflow-y: hidden; }
+.screen-element[data-state="close"],
+.none{ display: none !important; }
+.screen-element[data-state="open"],
+.block{ display: block; }
+.flex{ display: flex; }
+.flex.center{
+    justify-content: center;
+    align-items: center;
+}
+.inline{ display: inline; }
+.italic{ font-style: italic; }
+.small{ font-size: 8pt; }
+.center{ text-align: center; }
+.block_center{ margin: auto; }
+.color{ color: var(--main-color); }
+.gray{ color: gray; }
+.size{ width: 1000px; }
+.small_size{ width: 500px; }
+.margin-tb{ margin-top: 20px; margin-bottom: 20px; }
+.no-marg{ margin: 0; }
+.marg-5{ margin: 5px; }
+.marg-10{ margin: 10px; }
+.marg-20{ margin: 20px; }
+.author{ padding: 10px; margin-bottom: 50px; }
+.author,
+.author a{ color: gray; text-decoration: none; }
+h1{
+    background-image: url("../../images/zevent-logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    text-indent: -99999px;
+    min-height: 100px;
+    position: relative;
+}
+h1 > span{
+    text-indent: 0;
+    position: absolute;
+    top: 75px; left: 50%;
+}
+.i-eye:after{ content: "\01F441"; margin-left: 10px; }
+input[type=text]{
+    border: none;
+    border-bottom: solid 1px var(--main-color);
+    background-color: transparent;
+    padding: 10px;
+    min-width: 250px;
+    margin: 50px auto 10px;
+    display: block;
+    color: white;
+}
+input[type=text]:focus{
+    outline: none;
+    border: solid 1px var(--main-color);
+    border-radius: 5px;
+}
+input[type=checkbox]{ position: relative; }
+input[type=checkbox]:before{
+    content: "\2716";
+    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: -4px;
+    background-color: var(--black-color);
+    border-radius: 50%;
+    border: solid 2px gray;
+}
+input[type=checkbox]:checked:before{
+    content: "\2714";
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: white;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+.outline{
+    text-shadow:
+       3px  3px 0 var(--black-color),
+      -1px -1px 0 var(--black-color),  
+       1px -1px 0 var(--black-color),
+      -1px  1px 0 var(--black-color),
+       1px  1px 0 var(--black-color);
+}
+select{
+    border: solid 3px var(--main-color);
+    padding: 7.5px 15px;
+    color: white;
+    background-color: var(--black-color);
+    border-radius: 5px;
+}
+button{ font-family: 'Carter One', cursive; }
+button[disabled]{
+    background-color: gray !important;
+    opacity: .5;
+    position: relative;
+}
+button .loader,
+button[disabled] .text{ display: none; }
+button[disabled] .loader{
+    display: block;
+    margin: auto;
+}
+.loader {
+    width: 25px;
+    --b: 8px; 
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 1px;
+    background: conic-gradient(#0000 10%,white) content-box;
+    -webkit-mask:
+        repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+        radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    animation:l4 1s infinite steps(10);
+}
+@keyframes l4 {to{transform: rotate(1turn)}}
+table{ margin: 50px auto; border-collapse: collapse; }
+table caption{ font-style: italic; font-size: .75em; }
+table td{ padding: 15px; }
+table tr:nth-child(odd){ background-color: rgb(19, 19, 19); }

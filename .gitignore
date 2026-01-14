@@ -1,0 +1,6 @@
+.ddev
+.git
+.env
+
+/stEngine/
+/node_modules/
